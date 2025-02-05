@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Anniversary!</title>
+    <style>
+        body {
+            text-align: center;
+            background-color: #ffccdc;
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+        }
+        h1 {
+            font-size: 3rem;
+            color: #d63384;
+            margin-top: 20vh;
+        }
+        .message {
+            font-size: 1.5rem;
+            color: #333;
+            margin: 20px auto;
+            max-width: 600px;
+        }
+        .btn {
+            background-color: #ff4081;
+            color: white;
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        @keyframes float-hearts {
+            0% { transform: translateY(100vh) scale(0.5); opacity: 1; }
+            100% { transform: translateY(-10vh) scale(1); opacity: 0; }
+        }
+        .heart {
+            position: absolute;
+            color: red;
+            font-size: 2rem;
+            animation: float-hearts 5s linear infinite;
+        }
+    </style>
+</head>
+<body>
+    <h1>Happy 1st Anniversary, Deeya! 💖</h1>
+    <p class="message">Every moment with you has been magical. Thank you for a year of love and happiness.</p>
+    <div class="love-letter">
+        <p>My dearest love,</p>
+        <p>From the moment we met, my world became brighter. Your laughter is my favorite melody, and your presence is my greatest gift. I cherish every second with you, and I look forward to a lifetime of love and happiness together.</p>
+        <p>Forever yours,</p>
+        <p><strong>Your Love</strong></p>
+    </div>
+    
+    
+    <button class="btn" onclick="goToSurprisePage()">Click for a Surprise</button>
+    <audio id="bg-music" autoplay loop>
+        <source src="wonderfulwoman.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    
+    <script>
+        function goToSurprisePage() {
+            window.location.href = "surprise.html";
+        }
+        function createHeart() {
+            const heart = document.createElement("div");
+            heart.classList.add("heart");
+            heart.innerHTML = "❤️";
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.animationDuration = Math.random() * 3 + 2 + "s";
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), 5000);
+        }
+        setInterval(createHeart, 300);
+
+        
+    </script>
+</body>
+</html>

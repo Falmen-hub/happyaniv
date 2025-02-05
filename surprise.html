@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surprise!</title>
+    <style>
+        body {
+            text-align: center;
+            background-color: #ffccdc;
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+        }
+        .cake {
+            width: 150px;
+            height: 100px;
+            background: #ff69b4;
+            border-radius: 10px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+        }
+        .cake::before {
+            content: "";
+            width: 160px;
+            height: 20px;
+            background: white;
+            position: absolute;
+            top: -10px;
+            left: -5px;
+            border-radius: 10px;
+        }
+        .candle {
+            width: 10px;
+            height: 30px;
+            background: red;
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .flame {
+            width: 10px;
+            height: 15px;
+            background: orange;
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 50%;
+            animation: flicker 0.5s infinite alternate;
+        }
+        @keyframes flicker {
+            0% { opacity: 1; transform: translateX(-50%) scale(1); }
+            100% { opacity: 0.6; transform: translateX(-50%) scale(1.2); }
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); }
+            50% { transform: translate(-50%, -45%) scale(1.1); }
+        }
+        .heart {
+            position: absolute;
+            color: red;
+            font-size: 2rem;
+            animation: float-hearts 5s linear infinite;
+        }
+        @keyframes float-hearts {
+            0% { transform: translateY(100vh) scale(0.5); opacity: 1; }
+            100% { transform: translateY(-10vh) scale(1); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <h1>Surprise! 🎂💖</h1>
+    <div class="cake">
+        <div class="candle">
+            <div class="flame"></div>
+        </div>
+    </div>
+    <script>
+        function createHeart() {
+            const heart = document.createElement("div");
+            heart.classList.add("heart");
+            heart.innerHTML = "❤️";
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.animationDuration = Math.random() * 3 + 2 + "s";
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), 5000);
+        }
+        setInterval(createHeart, 300);
+    </script>
+</body>
+</html>
